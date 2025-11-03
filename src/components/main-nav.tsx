@@ -118,7 +118,7 @@ export function MainNav() {
         </div>
       </SidebarHeader>
       <SidebarContent>
-        <SidebarMenu>
+        <SidebarMenu className="p-2">
           {features.sort((a, b) => a.href === '/' ? -1 : b.href === '/' ? 1 : a.title.localeCompare(b.title)).map((feature) => (
             <SidebarMenuItem key={feature.href}>
               <Link href={feature.href}>
