@@ -128,7 +128,28 @@ export default function AiNoteTakerPage() {
   const handleDownloadPdf = () => {
     if (result) {
       const doc = new jsPDF();
-      doc.text(result.notes, 10, 10);
+      const pageHeight = doc.internal.pageSize.height;
+      const margin = 15;
+      let y = margin;
+      
+      doc.setFontSize(18);
+      doc.text(currentTopic, margin, y);
+      y += 10;
+      
+      doc.setFontSize(12);
+
+      // Split the text into lines that fit the page width
+      const textLines = doc.splitTextToSize(result.notes, doc.internal.pageSize.width - margin * 2);
+
+      textLines.forEach((line: string) => {
+        if (y + 10 > pageHeight - margin) {
+          doc.addPage();
+          y = margin;
+        }
+        doc.text(line, margin, y);
+        y += 7; // Line height
+      });
+      
       doc.save(`${currentTopic.replace(/ /g, '_')}_notes.pdf`);
     }
   };
