@@ -7,14 +7,19 @@ import { Separator } from "@/components/ui/separator";
 
 const announcements = [
   {
-    title: "Mid-Term Exam Schedule Released",
-    date: "2024-10-15",
-    body: "The schedule for the upcoming mid-term examinations has been published. Please check the student portal for details."
+    title: "Tech Fest 'Innovate 2025' Kick-off!",
+    date: "2025-04-20",
+    body: "The annual tech fest, Innovate 2025, starts next week! Get ready for a series of workshops, competitions, and guest lectures. Check the event portal for the full schedule."
   },
   {
-    title: "Annual Tech Fest 'Innovate 2024'",
-    date: "2024-10-12",
-    body: "Registrations are now open for Innovate 2024. Participate in exciting coding challenges, workshops, and talks."
+    title: "End-Semester Exam Schedule Published",
+    date: "2025-04-18",
+    body: "The final examination schedule for the current semester is now available on the student portal. Please review your dates carefully."
+  },
+  {
+    title: "Library Hours Extended for Exams",
+    date: "2025-04-15",
+    body: "To help students prepare for finals, the central library will be open 24/7 from April 25th until the end of the examination period."
   }
 ];
 
