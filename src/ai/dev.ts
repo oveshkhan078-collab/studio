@@ -6,3 +6,4 @@ import '@/ai/flows/career-guidance-chatbot.ts';
 import '@/ai/flows/ai-doubt-solver-explanations.ts';
 import '@/ai/flows/personalized-study-plan.ts';
 import '@/ai/flows/solve-math-problem.ts';
+import '@/ai/flows/generate-3d-model.ts';
