@@ -54,7 +54,7 @@ export default function NotesMarketplacePage() {
         {notes.map((note, index) => (
           <Card key={index} className="overflow-hidden flex flex-col">
             <div className="relative w-full h-40">
-              <Image src={note.image} alt={note.title} layout="fill" objectFit="cover" data-ai-hint={note.imageHint} />
+              <Image src={note.image} alt={note.title} fill className="object-cover" data-ai-hint={note.imageHint} />
             </div>
             <CardHeader>
               <CardTitle className="text-lg">{note.title}</CardTitle>
