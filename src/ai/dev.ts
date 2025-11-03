@@ -8,3 +8,4 @@ import '@/ai/flows/ai-doubt-solver-explanations.ts';
 import '@/ai/flows/personalized-study-plan.ts';
 import '@/ai/flows/solve-math-problem.ts';
 import '@/ai/flows/youtube-coding-video-suggestion.ts';
+import '@/ai/flows/generate-notes.ts';

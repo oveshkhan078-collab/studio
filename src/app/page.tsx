@@ -16,7 +16,8 @@ import {
   FlaskConical,
   MessageCircle,
   Youtube,
-  ArrowRight
+  ArrowRight,
+  BookCopy
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -117,6 +118,13 @@ const features = [
     description: "AI-powered YouTube video recommendations.",
     icon: <Youtube className="w-8 h-8 text-primary" />,
     href: "/youtube-video-suggester",
+    tag: "GenAI"
+  },
+  {
+    title: "AI Note Taker",
+    description: "Generate and save notes on any topic.",
+    icon: <BookCopy className="w-8 h-8 text-primary" />,
+    href: "/ai-note-taker",
     tag: "GenAI"
   }
 ];

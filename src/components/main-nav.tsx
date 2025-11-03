@@ -17,7 +17,8 @@ import {
   FlaskConical,
   MessageCircle,
   Youtube,
-  GraduationCap
+  GraduationCap,
+  BookCopy
 } from "lucide-react";
 import { usePathname } from 'next/navigation';
 import {
@@ -35,29 +36,9 @@ const features = [
     href: "/",
   },
   {
-    title: "AR/VR Visualizer",
-    icon: <View />,
-    href: "/ar-vr-visualizer",
-  },
-  {
-    title: "Tech Hub",
-    icon: <Rss />,
-    href: "/tech-hub",
-  },
-  {
-    title: "AI Resume Assistant",
-    icon: <FileText />,
-    href: "/resume-assistant",
-  },
-  {
-    title: "Study Companion",
-    icon: <Timer />,
-    href: "/study-companion",
-  },
-  {
-    title: "Notes Marketplace",
-    icon: <Store />,
-    href: "/notes-marketplace",
+    title: "AI Calculator",
+    icon: <Calculator />,
+    href: "/calculator",
   },
   {
     title: "AI Doubt Solver",
@@ -65,19 +46,14 @@ const features = [
     href: "/doubt-solver",
   },
   {
-    title: "Internship Finder",
-    icon: <Briefcase />,
-    href: "/internships",
+    title: "AI Note Taker",
+    icon: <BookCopy />,
+    href: "/ai-note-taker",
   },
   {
-    title: "Campus Connect",
-    icon: <Building2 />,
-    href: "/campus-connect",
-  },
-  {
-    title: "AI Calculator",
-    icon: <Calculator />,
-    href: "/calculator",
+    title: "AI Resume Assistant",
+    icon: <FileText />,
+    href: "/resume-assistant",
   },
   {
     title: "AI Study Plan",
@@ -85,14 +61,14 @@ const features = [
     href: "/study-plan-generator",
   },
   {
-    title: "Coding Challenges",
-    icon: <Code />,
-    href: "/coding-challenges",
+    title: "AR/VR Visualizer",
+    icon: <View />,
+    href: "/ar-vr-visualizer",
   },
   {
-    title: "Virtual Labs",
-    icon: <FlaskConical />,
-    href: "/virtual-labs",
+    title: "Campus Connect",
+    icon: <Building2 />,
+    href: "/campus-connect",
   },
   {
     title: "Career Counselor",
@@ -100,9 +76,39 @@ const features = [
     href: "/career-counseling",
   },
   {
+    title: "Coding Challenges",
+    icon: <Code />,
+    href: "/coding-challenges",
+  },
+  {
+    title: "Internship Finder",
+    icon: <Briefcase />,
+    href: "/internships",
+  },
+  {
+    title: "Notes Marketplace",
+    icon: <Store />,
+    href: "/notes-marketplace",
+  },
+  {
+    title: "Study Companion",
+    icon: <Timer />,
+    href: "/study-companion",
+  },
+  {
+    title: "Tech Hub",
+    icon: <Rss />,
+    href: "/tech-hub",
+  },
+  {
     title: "Video Suggester",
     icon: <Youtube />,
     href: "/youtube-video-suggester",
+  },
+  {
+    title: "Virtual Labs",
+    icon: <FlaskConical />,
+    href: "/virtual-labs",
   }
 ];
 
