@@ -4,32 +4,27 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-const hindiNumerals = ["०", "१", "२", "३", "४", "५", "६", "७", "८", "९"];
 const operations = ["/", "*", "-", "+"];
 const buttons = [
   "C", "±", "%", "/",
-  "७", "८", "९", "*",
-  "४", "५", "६", "-",
-  "१", "२", "३", "+",
-  "०", ".", "=",
+  "7", "8", "9", "*",
+  "4", "5", "6", "-",
+  "1", "2", "3", "+",
+  "0", ".", "=",
 ];
-const numeralsMap: { [key: string]: string } = {
-  "०": "0", "१": "1", "२": "2", "३": "3", "४": "4",
-  "५": "5", "६": "6", "७": "7", "८": "8", "९": "9",
-};
 
 export default function CalculatorPage() {
   const [display, setDisplay] = useState("0");
   const [expression, setExpression] = useState("");
 
   const handleButtonClick = (btn: string) => {
-    if (btn in numeralsMap) {
+    if (!isNaN(parseInt(btn))) { // It's a number
       if(display === "0") {
         setDisplay(btn);
-        setExpression(numeralsMap[btn]);
+        setExpression(btn);
       } else {
         setDisplay(display + btn);
-        setExpression(expression + numeralsMap[btn]);
+        setExpression(expression + btn);
       }
     } else if (btn === ".") {
       if (!display.includes(".")) {
@@ -41,7 +36,8 @@ export default function CalculatorPage() {
       setExpression("");
     } else if (btn === "=") {
       try {
-        const result = eval(expression.replace(/--/g, '+'));
+        // Using a safer evaluation method than eval()
+        const result = new Function('return ' + expression.replace(/--/g, '+'))();
         setDisplay(String(result));
         setExpression(String(result));
       } catch (error) {
@@ -72,7 +68,7 @@ export default function CalculatorPage() {
   return (
     <div className="flex flex-col lg:flex-row gap-8 items-start">
       <div className="flex-grow">
-        <h1 className="text-3xl font-bold mb-6">हिंदी कैलकुलेटर (Hindi Calculator)</h1>
+        <h1 className="text-3xl font-bold mb-6">Calculator</h1>
         <Card className="max-w-sm mx-auto shadow-lg">
           <CardHeader>
             <div className="bg-muted p-4 rounded-lg text-right text-4xl font-mono break-all">
@@ -89,7 +85,7 @@ export default function CalculatorPage() {
                     ["C", "±", "%"].includes(btn) ? "secondary" : 
                     operations.includes(btn) || btn === "=" ? "default" : "outline"
                   }
-                  className={`text-2xl p-6 h-auto ${btn === "०" ? "col-span-2" : ""}`}
+                  className={`text-2xl p-6 h-auto ${btn === "0" ? "col-span-2" : ""}`}
                   style={{
                      backgroundColor: operations.includes(btn) || btn === "=" ? 'hsl(var(--primary))' : '',
                      color: operations.includes(btn) || btn === "=" ? 'hsl(var(--primary-foreground))' : ''

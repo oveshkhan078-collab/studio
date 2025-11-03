@@ -86,8 +86,8 @@ const features = [
     tag: "Campus"
   },
   {
-    title: "Hindi Calculator",
-    description: "A calculator with Hindi language support.",
+    title: "Calculator",
+    description: "A calculator with standard functions.",
     icon: <Calculator className="w-8 h-8 text-primary" />,
     href: "/calculator",
     tag: "Utility"

@@ -81,7 +81,7 @@ const features = [
     href: "/campus-connect",
   },
   {
-    title: "Hindi Calculator",
+    title: "Calculator",
     icon: <Calculator />,
     href: "/calculator",
   },
