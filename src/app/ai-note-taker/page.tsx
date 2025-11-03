@@ -23,7 +23,7 @@ import {
 } from '@/components/ui/card';
 import {useState, useTransition, useEffect} from 'react';
 import {getAiNotes} from './actions';
-import {BookCopy, Loader2, Save, ChevronsLeft, ChevronsRight} from 'lucide-react';
+import {BookCopy, Loader2, Save, ChevronsLeft, ChevronsRight, Download} from 'lucide-react';
 import {useToast} from '@/hooks/use-toast';
 import {
   AlertDialog,
@@ -35,6 +35,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import jsPDF from 'jspdf';
 
 const FormSchema = z.object({
   topic: z.string().min(3, {
@@ -123,6 +124,14 @@ export default function AiNoteTakerPage() {
     }
     setShowSaveConfirm(false);
   };
+  
+  const handleDownloadPdf = () => {
+    if (result) {
+      const doc = new jsPDF();
+      doc.text(result.notes, 10, 10);
+      doc.save(`${currentTopic.replace(/ /g, '_')}_notes.pdf`);
+    }
+  };
 
   return (
     <div className="grid md:grid-cols-2 gap-8">
@@ -188,14 +197,24 @@ export default function AiNoteTakerPage() {
             <CardHeader>
               <div className="flex justify-between items-center">
                 <CardTitle>Generated Notes: {currentTopic}</CardTitle>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setShowSaveConfirm(true)}
-                >
-                  <Save className="mr-2 h-4 w-4" />
-                  Save
-                </Button>
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={handleDownloadPdf}
+                  >
+                    <Download className="mr-2 h-4 w-4" />
+                    PDF
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setShowSaveConfirm(true)}
+                  >
+                    <Save className="mr-2 h-4 w-4" />
+                    Save
+                  </Button>
+                </div>
               </div>
             </CardHeader>
             <CardContent className="prose prose-sm max-w-none text-foreground whitespace-pre-wrap">
