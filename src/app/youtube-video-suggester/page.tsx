@@ -67,8 +67,8 @@ export default function YouTubeVideoSuggesterPage() {
   return (
     <div>
       <h1 className="text-3xl font-bold mb-6">Coding Video Suggester</h1>
-      <div className="grid md:grid-cols-3 gap-8">
-        <div className="md:col-span-1">
+      <div className="grid lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-1">
           <Card>
             <CardHeader>
               <CardTitle>Find Coding Videos</CardTitle>
@@ -105,10 +105,10 @@ export default function YouTubeVideoSuggesterPage() {
           </Card>
         </div>
 
-        <div className="md:col-span-2 space-y-4">
+        <div className="lg:col-span-2 space-y-4">
           <h2 className="text-xl font-semibold">AI Recommendations</h2>
           {isPending && (
-            <Card className="flex items-center justify-center h-64">
+            <Card className="flex items-center justify-center h-96">
               <div className="flex flex-col items-center gap-2 text-muted-foreground">
                 <Loader2 className="h-8 w-8 animate-spin" />
                 <p>Searching for the best videos...</p>
@@ -116,7 +116,7 @@ export default function YouTubeVideoSuggesterPage() {
             </Card>
           )}
           {!isPending && !result && (
-             <Card className="flex items-center justify-center h-64 text-center p-4">
+             <Card className="flex items-center justify-center h-96 text-center p-4">
                <div className="flex flex-col items-center gap-2 text-muted-foreground">
                  <Youtube className="h-12 w-12" />
                  <p>Your video suggestions for learning to code will appear here.</p>
@@ -124,22 +124,20 @@ export default function YouTubeVideoSuggesterPage() {
              </Card>
           )}
           {result && (
-            <div className="grid sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
                 {result.suggestions.map((video, index) => (
-                    <Card key={index}>
-                        <CardContent className="p-0">
-                            <div className="aspect-video">
-                                <iframe
-                                    className="w-full h-full"
-                                    src={`https://www.youtube.com/embed/${video.youtubeId}`}
-                                    title={video.title}
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                ></iframe>
-                            </div>
-                        </CardContent>
-                        <CardHeader>
-                            <CardTitle className="text-base leading-tight">{video.title}</CardTitle>
+                    <Card key={index} className="flex flex-col overflow-hidden">
+                        <div className="aspect-video w-full">
+                            <iframe
+                                className="w-full h-full"
+                                src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                                title={video.title}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+                        <CardHeader className="flex-grow">
+                            <CardTitle className="text-base leading-tight line-clamp-2">{video.title}</CardTitle>
                             <CardDescription>{video.channel}</CardDescription>
                         </CardHeader>
                     </Card>
