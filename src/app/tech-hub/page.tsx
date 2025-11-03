@@ -1,33 +1,32 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { ArrowRight, MapPin, Calendar } from "lucide-react";
 
 const newsItems = [
   {
     id: "1",
-    title: "The Rise of AI in Modern Software Development",
+    title: "Google Announces Gemini 2.5 with Advanced Reasoning",
     source: "TechCrunch",
-    date: "2024-10-20",
+    date: "2024-10-26",
     image: PlaceHolderImages.find(img => img.id === 'tech-news-1')
   },
   {
     id: "2",
-    title: "Pune to Host Major Web3 Conclave Next Month",
+    title: "Pune to Host Major AI and Robotics Expo Next Month",
     source: "Pune Tech News",
-    date: "2024-10-18",
+    date: "2024-10-24",
     image: PlaceHolderImages.find(img => img.id === 'tech-news-2')
   },
   {
     id: "3",
-    title: "How Remote Work is Changing the Tech Landscape",
+    title: "The Future of Quantum Computing and its Impact on B.Tech education",
     source: "Wired",
-    date: "2024-10-15",
+    date: "2024-10-22",
     image: PlaceHolderImages.find(img => img.id === 'tech-news-3')
   }
-];
+].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 const hackathons = [
   {
@@ -66,7 +65,7 @@ export default function TechHubPage() {
                       <Image 
                         src={item.image.imageUrl} 
                         alt={item.title} 
-                        layout="fill" 
+                        fill 
                         objectFit="cover" 
                         data-ai-hint={item.image.imageHint}
                       />
@@ -100,7 +99,7 @@ export default function TechHubPage() {
                        <Image 
                         src={item.image.imageUrl} 
                         alt={item.title} 
-                        layout="fill" 
+                        fill
                         objectFit="cover"
                         data-ai-hint={item.image.imageHint}
                       />
