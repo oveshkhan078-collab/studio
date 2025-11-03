@@ -31,7 +31,7 @@ const models = [
   },
   {
     name: 'Jet Engine',
-    src: 'https://modelviewer.dev/shared-assets/models/Turbofan.glb',
+    src: 'https://cdn.glitch.global/66a71537-4404-425f-8793-1fe69724c9c1/turbofan.glb?v=1714433609824',
     alt: 'A 3D model of a jet engine',
     poster: 'https://picsum.photos/seed/jetengine/600/400',
     description: 'A detailed model of a turbofan jet engine. Zoom in to see the intricate fan blades and internal components.',
