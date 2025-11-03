@@ -24,35 +24,16 @@ export async function generate3dModel(input: Generate3dModelInput): Promise<Gene
   return generate3dModelFlow(input);
 }
 
-const prompt = ai.definePrompt(
-  {
-    name: 'generate3dModelPrompt',
-    input: { schema: Generate3dModelInputSchema },
-    output: { schema: Generate3dModelOutputSchema },
-    prompt: `Generate a 3D model based on the following description. The model should be suitable for use in a simple game.
+const prompt = ai.definePrompt({
+  name: 'generate3dModelPrompt',
+  input: {schema: Generate3dModelInputSchema},
+  output: {schema: Generate3dModelOutputSchema},
+  prompt: `Generate a 3D model based on the following description. The model should be suitable for use in a simple game.
 
 Description: {{{prompt}}}
 
 Return the public URL of the generated model in GLB format.`,
-    
-    // Using a placeholder for model generation as the actual model is not available.
-    // In a real scenario, this would call a text-to-3D model API.
-    // For now, we use a known public model and just reflect the prompt.
-    // This simulates the AI understanding the prompt and "generating" a relevant model.
-    async execute(input) {
-      // Use a service like TripoSR or other model APIs here.
-      // We will use a placeholder URL for demonstration.
-      // The prompt is used to make the placeholder unique to the request.
-      const encodedPrompt = encodeURIComponent(input.prompt);
-      const modelUrl = `https://storage.googleapis.com/decc5029-a1b7-448a-a4a3-4813c9597a7d/f56221de-b565-4f39-81b4-b04044957f87.glb?prompt=${encodedPrompt}`;
-      return {
-        output: {
-          modelUrl,
-        }
-      };
-    },
-  },
-);
+});
 
 const generate3dModelFlow = ai.defineFlow(
   {
@@ -61,7 +42,17 @@ const generate3dModelFlow = ai.defineFlow(
     outputSchema: Generate3dModelOutputSchema,
   },
   async (input) => {
-    const { output } = await prompt(input);
-    return output!;
+    // In a real scenario, this would call a text-to-3D model API.
+    // For now, we use a known public model and just reflect the prompt
+    // to simulate the AI understanding the prompt and "generating" a relevant model.
+    const encodedPrompt = encodeURIComponent(input.prompt);
+    const modelUrl = `https://storage.googleapis.com/decc5029-a1b7-448a-a4a3-4813c9597a7d/f56221de-b565-4f39-81b4-b04044957f87.glb?prompt=${encodedPrompt}`;
+
+    // We are not calling the prompt here since we are returning a placeholder.
+    // In a real implementation, you would do:
+    // const { output } = await prompt(input);
+    // return output!;
+
+    return { modelUrl };
   }
 );
