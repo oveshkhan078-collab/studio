@@ -3,7 +3,6 @@
 import Link from "next/link";
 import {
   LayoutGrid,
-  Puzzle,
   View,
   Rss,
   FileText,
@@ -20,7 +19,6 @@ import {
   GraduationCap
 } from "lucide-react";
 import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
 import {
   SidebarContent,
   SidebarHeader,
@@ -34,11 +32,6 @@ const features = [
     title: "Dashboard",
     icon: <LayoutGrid />,
     href: "/",
-  },
-  {
-    title: "3D Game Sandbox",
-    icon: <Puzzle />,
-    href: "/game-design-sandbox",
   },
   {
     title: "AR/VR Visualizer",

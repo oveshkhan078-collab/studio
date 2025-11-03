@@ -2,7 +2,6 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Link from "next/link";
 import {
-  Puzzle,
   View,
   Rss,
   FileText,
@@ -19,16 +18,8 @@ import {
   ArrowRight
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 
 const features = [
-  {
-    title: "3D Game Design Sandbox",
-    description: "Create and design 3D puzzle games.",
-    icon: <Puzzle className="w-8 h-8 text-primary" />,
-    href: "/game-design-sandbox",
-    tag: "Creative"
-  },
   {
     title: "AR/VR Engineering Visualizer",
     description: "Visualize complex machines and circuits.",
