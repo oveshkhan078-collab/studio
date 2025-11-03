@@ -8,7 +8,7 @@
  */
 
 import { ai } from '@/ai/genkit';
-import { z } from 'genkit';
+import { z } from 'zod';
 
 const SuggestCodingVideosInputSchema = z.object({
   language: z.string().describe('The programming language for which to suggest videos.'),
