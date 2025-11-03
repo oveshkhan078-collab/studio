@@ -23,7 +23,7 @@ import {
 } from '@/components/ui/card';
 import {useState, useTransition, useEffect} from 'react';
 import {getAiNotes} from './actions';
-import {BookCopy, Loader2, Save} from 'lucide-react';
+import {BookCopy, Loader2, Save, ChevronsLeft, ChevronsRight} from 'lucide-react';
 import {useToast} from '@/hooks/use-toast';
 import {
   AlertDialog,
@@ -58,6 +58,7 @@ export default function AiNoteTakerPage() {
   const [currentTopic, setCurrentTopic] = useState('');
   const [showSaveConfirm, setShowSaveConfirm] = useState(false);
   const [savedNotes, setSavedNotes] = useState<SavedNote[]>([]);
+  const [currentPage, setCurrentPage] = useState(0);
   const {toast} = useToast();
 
   useEffect(() => {
@@ -104,6 +105,7 @@ export default function AiNoteTakerPage() {
       };
       const updatedNotes = [newNote, ...savedNotes];
       setSavedNotes(updatedNotes);
+      setCurrentPage(0);
       try {
         localStorage.setItem('savedAiNotes', JSON.stringify(updatedNotes));
         toast({
@@ -205,25 +207,34 @@ export default function AiNoteTakerPage() {
 
       <div className="space-y-6">
         <h2 className="text-2xl font-bold">My Saved Notes</h2>
-        <Card>
-          <CardContent className="p-4 max-h-[80vh] overflow-y-auto">
-            {savedNotes.length > 0 ? (
-              <div className="space-y-4">
-                {savedNotes.map((note, index) => (
-                  <details key={index} className="group">
-                    <summary className="flex cursor-pointer items-center justify-between rounded-md bg-muted p-3 font-medium transition-colors hover:bg-muted/80">
-                      <span>{note.topic}</span>
-                      <span className="text-xs text-muted-foreground">
-                        {new Date(note.date).toLocaleDateString()}
-                      </span>
-                    </summary>
-                    <div className="prose prose-sm mt-2 max-w-none rounded-md border p-4 text-foreground whitespace-pre-wrap">
-                      {note.notes}
-                    </div>
-                  </details>
-                ))}
+        <Card className="overflow-hidden">
+          {savedNotes.length > 0 ? (
+            <>
+              <CardHeader>
+                <CardTitle>{savedNotes[currentPage].topic}</CardTitle>
+                <CardDescription>
+                  Saved on {new Date(savedNotes[currentPage].date).toLocaleDateString()}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="bg-white rounded-md shadow-lg p-8 h-[70vh] overflow-y-auto text-black prose prose-sm max-w-none whitespace-pre-wrap">
+                   {savedNotes[currentPage].notes}
+                </div>
+              </CardContent>
+              <div className="flex items-center justify-between p-4 border-t">
+                  <Button variant="outline" onClick={() => setCurrentPage(p => Math.max(0, p-1))} disabled={currentPage === 0}>
+                     <ChevronsLeft className="mr-2 h-4 w-4" /> Previous
+                  </Button>
+                  <span className="text-sm font-medium text-muted-foreground">
+                    Page {currentPage + 1} of {savedNotes.length}
+                  </span>
+                  <Button variant="outline" onClick={() => setCurrentPage(p => Math.min(savedNotes.length - 1, p+1))} disabled={currentPage === savedNotes.length - 1}>
+                      Next <ChevronsRight className="ml-2 h-4 w-4" />
+                  </Button>
               </div>
-            ) : (
+            </>
+          ) : (
+            <CardContent className="h-full">
               <div className="flex flex-col items-center justify-center h-64 text-center p-4">
                 <BookCopy className="h-10 w-10 text-muted-foreground" />
                 <p className="mt-4 text-muted-foreground">
@@ -232,8 +243,8 @@ export default function AiNoteTakerPage() {
                   Generate and save notes to see them here.
                 </p>
               </div>
-            )}
-          </CardContent>
+            </CardContent>
+          )}
         </Card>
       </div>
 
