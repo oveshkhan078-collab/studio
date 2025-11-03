@@ -7,23 +7,23 @@ import { ArrowRight, MapPin, Calendar } from "lucide-react";
 const newsItems = [
   {
     id: "1",
-    title: "Google Announces Gemini 2.5 with Advanced Reasoning",
+    title: "Breakthrough in Neural Interfaces: Brain-Computer Links Get Faster",
     source: "TechCrunch",
-    date: "2024-10-26",
+    date: "2025-03-15",
     image: PlaceHolderImages.find(img => img.id === 'tech-news-1')
   },
   {
     id: "2",
-    title: "Pune to Host Major AI and Robotics Expo Next Month",
+    title: "India's First Commercial Quantum Server Goes Live in Pune",
     source: "Pune Tech News",
-    date: "2024-10-24",
+    date: "2025-02-28",
     image: PlaceHolderImages.find(img => img.id === 'tech-news-2')
   },
   {
     id: "3",
-    title: "The Future of Quantum Computing and its Impact on B.Tech education",
+    title: "The Rise of Generative Engineering: AI in B.Tech Curriculums",
     source: "Wired",
-    date: "2024-10-22",
+    date: "2025-01-20",
     image: PlaceHolderImages.find(img => img.id === 'tech-news-3')
   }
 ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -31,16 +31,16 @@ const newsItems = [
 const hackathons = [
   {
     id: "1",
-    title: "Innovate Pune Hackathon 2024",
+    title: "Innovate Pune Hackathon 2025",
     location: "Pune, Maharashtra",
-    date: "2024-11-05 to 2024-11-06",
+    date: "2025-04-05 to 2025-04-06",
     image: PlaceHolderImages.find(img => img.id === 'hackathon-1')
   },
   {
     id: "2",
-    title: "Code for Good - Online Hackathon",
+    title: "Code for a Cause - National Hackathon",
     location: "Online",
-    date: "2024-11-12 to 2024-11-13",
+    date: "2025-03-22 to 2025-03-23",
     image: PlaceHolderImages.find(img => img.id === 'tech-news-1')
   }
 ];
