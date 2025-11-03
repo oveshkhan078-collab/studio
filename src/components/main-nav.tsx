@@ -117,10 +117,10 @@ export function MainNav() {
             <span className="text-lg font-semibold">CampusCraft</span>
         </div>
       </SidebarHeader>
-      <SidebarContent>
-        <SidebarMenu className="p-2">
+      <SidebarContent className="p-2">
+        <SidebarMenu>
           {features.sort((a, b) => a.href === '/' ? -1 : b.href === '/' ? 1 : a.title.localeCompare(b.title)).map((feature) => (
-            <SidebarMenuItem key={feature.href}>
+            <SidebarMenuItem key={feature.href} className="py-1">
               <Link href={feature.href}>
                 <SidebarMenuButton
                   tooltip={feature.title}
