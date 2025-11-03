@@ -15,6 +15,7 @@ import {
   Code,
   FlaskConical,
   MessageCircle,
+  Youtube,
   ArrowRight
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -110,6 +111,13 @@ const features = [
     icon: <MessageCircle className="w-8 h-8 text-primary" />,
     href: "/career-counseling",
     tag: "GenAI"
+  },
+  {
+    title: "Coding Video Suggester",
+    description: "AI-powered YouTube video recommendations.",
+    icon: <Youtube className="w-8 h-8 text-primary" />,
+    href: "/youtube-video-suggester",
+    tag: "GenAI"
   }
 ];
 
@@ -121,7 +129,7 @@ export default function Home() {
         <p className="text-muted-foreground mt-2">Your all-in-one B.Tech study and career companion. Explore the tools below.</p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {features.map((feature) => (
+        {features.sort((a,b) => a.title.localeCompare(b.title)).map((feature) => (
           <Link href={feature.href} key={feature.title} className="group">
             <Card className="h-full flex flex-col hover:border-primary transition-colors duration-300 hover:shadow-lg">
               <CardHeader>

@@ -16,6 +16,7 @@ import {
   Code,
   FlaskConical,
   MessageCircle,
+  Youtube,
   GraduationCap
 } from "lucide-react";
 import { usePathname } from 'next/navigation';
@@ -97,6 +98,11 @@ const features = [
     title: "Career Counselor",
     icon: <MessageCircle />,
     href: "/career-counseling",
+  },
+  {
+    title: "Video Suggester",
+    icon: <Youtube />,
+    href: "/youtube-video-suggester",
   }
 ];
 
@@ -113,11 +119,10 @@ export function MainNav() {
       </SidebarHeader>
       <SidebarContent>
         <SidebarMenu>
-          {features.map((feature) => (
+          {features.sort((a, b) => a.href === '/' ? -1 : b.href === '/' ? 1 : a.title.localeCompare(b.title)).map((feature) => (
             <SidebarMenuItem key={feature.href}>
-              <Link href={feature.href} passHref>
+              <Link href={feature.href}>
                 <SidebarMenuButton
-                  asChild
                   tooltip={feature.title}
                   isActive={pathname === feature.href}
                 >
