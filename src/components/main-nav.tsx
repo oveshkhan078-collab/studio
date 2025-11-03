@@ -122,13 +122,16 @@ export function MainNav() {
         <SidebarMenu>
           {features.map((feature) => (
             <SidebarMenuItem key={feature.href}>
-              <Link href={feature.href} legacyBehavior passHref>
+              <Link href={feature.href} passHref>
                 <SidebarMenuButton
+                  asChild
                   tooltip={feature.title}
                   isActive={pathname === feature.href}
                 >
-                  {feature.icon}
-                  <span>{feature.title}</span>
+                  <div>
+                    {feature.icon}
+                    <span>{feature.title}</span>
+                  </div>
                 </SidebarMenuButton>
               </Link>
             </SidebarMenuItem>
