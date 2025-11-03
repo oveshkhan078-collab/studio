@@ -86,11 +86,11 @@ const features = [
     tag: "Campus"
   },
   {
-    title: "Calculator",
-    description: "A calculator with standard functions.",
+    title: "AI Calculator",
+    description: "A calculator with standard and AI functions.",
     icon: <Calculator className="w-8 h-8 text-primary" />,
     href: "/calculator",
-    tag: "Utility"
+    tag: "GenAI"
   },
   {
     title: "AI Study Plan Generator",
@@ -136,7 +136,7 @@ export default function Home() {
               <CardHeader>
                 <div className="flex justify-between items-start">
                   {feature.icon}
-                  <Badge variant="secondary">{feature.tag}</Badge>
+                  <Badge variant={feature.tag === "GenAI" ? "default" : "secondary"}>{feature.tag}</Badge>
                 </div>
                 <CardTitle className="mt-4">{feature.title}</CardTitle>
               </CardHeader>

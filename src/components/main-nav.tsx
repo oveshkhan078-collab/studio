@@ -81,7 +81,7 @@ const features = [
     href: "/campus-connect",
   },
   {
-    title: "Calculator",
+    title: "AI Calculator",
     icon: <Calculator />,
     href: "/calculator",
   },

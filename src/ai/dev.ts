@@ -5,3 +5,4 @@ import '@/ai/flows/resume-assistant-feedback.ts';
 import '@/ai/flows/career-guidance-chatbot.ts';
 import '@/ai/flows/ai-doubt-solver-explanations.ts';
 import '@/ai/flows/personalized-study-plan.ts';
+import '@/ai/flows/solve-math-problem.ts';
