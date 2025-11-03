@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Calendar, MessageSquare, Megaphone, Users } from "lucide-react";
@@ -98,7 +99,7 @@ export default function CampusConnectPage() {
                         <p className="text-xs text-muted-foreground">{post.lastReply}</p>
                      </div>
                   </div>
-                  {index &lt; forumPosts.length - 1 &amp;&amp; &lt;Separator /&gt;}
+                  {index < forumPosts.length - 1 && <Separator />}
                 </div>
               ))}
             </CardContent>
